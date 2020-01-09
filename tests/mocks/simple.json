@@ -1,0 +1,27 @@
+{
+  "versionString": "v21",
+  "version": 57,
+  "name": {
+    "first": "Brian",
+    "full": "Brian Olore",
+    "last": "Olore"
+  },
+  "addresses": [
+    {
+      "type": "Home",
+      "street": "123 Main Street",
+      "city": "Middletown",
+      "state": "NJ",
+      "zip": "07748",
+      "country": "USA"
+    },
+    {
+      "type": "Work",
+      "street": "404 Not Found Avenue",
+      "city": "Nowhere",
+      "state": "CT",
+      "zip": "47478",
+      "country": "USA"
+    }
+  ]
+}

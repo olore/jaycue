@@ -1,0 +1,18 @@
+{
+  "name": "jqx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Brian Olore <brian@olore.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "lodash.isnumber": "^3.0.3"
+  }
+}
