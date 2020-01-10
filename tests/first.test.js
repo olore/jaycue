@@ -2,6 +2,12 @@ const jqx = require('../jqx');
 const fs = require('fs');
 const exec = require('child_process').execSync;
 
+test('identity', () => {
+  let query = '.';
+  let jsonFile = __dirname + '/mocks/simple.json';
+  compareResults(jsonFile, query);
+});
+
 test('can get top level string', () => {
   let query = '.versionString';
   let jsonFile = __dirname + '/mocks/simple.json';

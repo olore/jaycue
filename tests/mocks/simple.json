@@ -1,11 +1,4 @@
 {
-  "versionString": "v21",
-  "version": 57,
-  "name": {
-    "first": "Brian",
-    "full": "Brian Olore",
-    "last": "Olore"
-  },
   "addresses": [
     {
       "type": "Home",
@@ -23,5 +16,12 @@
       "zip": "47478",
       "country": "USA"
     }
-  ]
+  ],
+  "name": {
+    "first": "Brian",
+    "full": "Brian Olore",
+    "last": "Olore"
+  },
+  "version": 57,
+  "versionString": "v21"
 }
