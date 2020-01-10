@@ -2,11 +2,19 @@ const jqx = require('../jqx');
 const fs = require('fs');
 const exec = require('child_process').execSync;
 
-test('identity', () => {
+test('Identity', () => {
   let query = '.';
   let jsonFile = __dirname + '/mocks/simple.json';
   compareResults(jsonFile, query);
 });
+
+
+test('Object Identifier-Index', () => {
+  let query = '.foo';
+  let json = {"foo": 42, "bar": "less interesting data"}
+  expect(jqx(json, query)).toEqual(jq(json, query));
+});
+
 
 test('can get top level string', () => {
   let query = '.versionString';
@@ -33,18 +41,23 @@ test('can get an object', () => {
 });
 
 function compareResults(jsonFile, query) {
-  let jsonObject = JSON.parse(fs.readFileSync(jsonFile));
+  let jsonFileContents = fs.readFileSync(jsonFile).toString();
+  let jsonObject = JSON.parse(jsonFileContents);
+
   expect(
     jqx(jsonObject, query))
     .toEqual( 
-      jq(jsonFile, query)
+      jq(jsonObject, query)
     );
 }
 
+const echoify = (jsonObject) => {
+  return JSON.stringify(jsonObject).replace(/"/g, "\\\"");
+}
+
 // run actual jq command 
-function jq(jsonFile, query) {
-  let command = `cat ${jsonFile} | jq ${query}`;
-  console.log(command)
+function jq(jsonObject, query) {
+  let command = `echo "${echoify(jsonObject)}" | jq ${query}`;
 
   let result = exec(command).toString();
   
