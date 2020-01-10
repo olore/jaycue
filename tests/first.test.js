@@ -24,7 +24,7 @@ describe('Basic Filters', () => {
 
       // when jq returns null, we return undefined as it's more idiomatic in JS
       expect(jqx(json, query)).toEqual(undefined);
-      expect(jq(json, query)).toEqual("null");
+      expect(jq(json, query)).toEqual(null);
     });
 
     test('Object Identifier-Index 3', () => {
@@ -49,7 +49,7 @@ describe('Basic Filters', () => {
 
       // when jq returns null, we return undefined as it's more idiomatic in JS
       expect(jqx(json, query)).toEqual(undefined);
-      expect(jq(json, query)).toEqual("null");
+      expect(jq(json, query)).toEqual(null);
     });
 
     test('Optional Object Identifier-Index 3', () => {
@@ -80,17 +80,55 @@ describe('Basic Filters', () => {
       let json = [{"name":"JSON", "good":true}, {"name":"XML", "good":false}];
 
       expect(jqx(json, query)).toEqual(undefined);
-      expect(jq(json, query)).toEqual('null');
+      expect(jq(json, query)).toEqual(null);
     });
 
     test.skip('Array Index 3', () => {
       let query = '.[-2]';
       let json = [1,2,3]; // not JSON
+      expect(jqx(json, query)).toEqual(jq(json, query));
+    });
 
+    test('Negative Index', () => {
+      let query = '.[-1]';
+      let json = [{"name":"JSON", "good":true}, {"name":"XML", "good":false}];
       expect(jqx(json, query)).toEqual(jq(json, query));
     });
 
   });
+
+  describe('Array/String Slice', () => {
+    test('Array slice with start/end', () => {
+      let query = '.[2:4]';
+      let json = ["a","b","c","d","e"];
+      expect(jqx(json, query)).toEqual(jq(json, query));
+    })
+
+    test('Array slice with end only', () => {
+      let query = '.[:3]';
+      let json = ["a","b","c","d","e"];
+      expect(jqx(json, query)).toEqual(jq(json, query));
+    })
+
+    test('Array slice with negative end only', () => {
+      let query = '.[:-3]';
+      let json = ["a","b","c","d","e"];
+      expect(jqx(json, query)).toEqual(jq(json, query));
+    })
+
+    test('Array slice with start only', () => {
+      let query = '.[-2:]';
+      let json = ["a","b","c","d","e"];
+      expect(jqx(json, query)).toEqual(jq(json, query));
+    })
+
+    test('Array slice with positive start only', () => {
+      let query = '.[2:]';
+      let json = ["a","b","c","d","e"];
+      expect(jqx(json, query)).toEqual(jq(json, query));
+    })
+  });
+
 });
 
 describe('First tests', () => {
@@ -137,16 +175,6 @@ const echoify = (jsonObject) => {
 // run actual jq command 
 function jq(jsonObject, query) {
   let command = `echo "${echoify(jsonObject)}" | jq '${query}'`;
-
   let result = exec(command).toString();
-  
-  if (!result.includes(':')) { // not an obj
-    result = result.replace(/\"/g, '').trim();
-    if (result === Number(result).toString()) {
-      return Number(result)
-    }
-    return result;
-  }
-
   return JSON.parse(result);
 }
