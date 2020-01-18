@@ -1,4 +1,4 @@
-const jqx = require('../jqx');
+const jqx = require('../source');
 const { jq } = require('./test-helper')
 
 describe('Array Index', () => {

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const exec = require('child_process').execSync;
 
-const jqx = require('../jqx');
+const jqx = require('../source');
 
 function compareResults(jsonFile, query) {
   let jsonFileContents = fs.readFileSync(jsonFile).toString();
