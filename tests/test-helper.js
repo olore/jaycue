@@ -6,19 +6,19 @@ const parseJSONFile = (filePath) => {
   return JSON.parse(fs.readFileSync(filePath).toString());
 }
 
-const compareResults = (jsonFile, query) => {
+const compareResults = (jsonFile, filter) => {
   let jsonObject = parseJSONFile(jsonFile);
 
   expect(
-    jqx(jsonObject, query))
+    jqx(jsonObject, filter))
     .toEqual( 
-      jq(jsonObject, query)
+      jq(jsonObject, filter)
     );
 }
 
 // run actual jq command 
-const jq = (jsonObject, query) => {
-  let command = `echo "${echoify(jsonObject)}" | jq '${query}'`;
+const jq = (jsonObject, filter) => {
+  let command = `echo "${echoify(jsonObject)}" | jq '${filter}'`;
   let result = exec(command).toString();
   try {
     return JSON.parse(result);

@@ -4,10 +4,10 @@ const { jq } = require('./test-helper')
 describe('select', ()=> {
 
   test('.[]', () => {
-    let query = '.[]';
+    let filter = '.[]';
     let json = [{"id": "first", "val": 1}, {"id": "second", "val": 2}];
-    let expected = jq(json, query);
-    let actual = jqx(json, query);
+    let expected = jq(json, filter);
+    let actual = jqx(json, filter);
 
     // this isn't great, because .[] doesn't return valid JSON
     // and jq pretty prints it
@@ -16,9 +16,9 @@ describe('select', ()=> {
 
   });
   test('select', () => {
-    let query = '.[] | select(.id == "second")';
+    let filter = '.[] | select(.id == "second")';
     let json = [{"id": "first", "val": 1}, {"id": "second", "val": 2}];
-    expect(jqx(json, query)).toEqual(jq(json, query));
+    expect(jqx(json, filter)).toEqual(jq(json, filter));
   });
 
 });
