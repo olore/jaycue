@@ -1,11 +1,13 @@
 const fs = require('fs');
 const exec = require('child_process').execSync;
-
 const jqx = require('../source');
 
-function compareResults(jsonFile, query) {
-  let jsonFileContents = fs.readFileSync(jsonFile).toString();
-  let jsonObject = JSON.parse(jsonFileContents);
+const parseJSONFile = (filePath) => {
+  return JSON.parse(fs.readFileSync(filePath).toString());
+}
+
+const compareResults = (jsonFile, query) => {
+  let jsonObject = parseJSONFile(jsonFile);
 
   expect(
     jqx(jsonObject, query))
@@ -15,10 +17,15 @@ function compareResults(jsonFile, query) {
 }
 
 // run actual jq command 
-function jq(jsonObject, query) {
+const jq = (jsonObject, query) => {
   let command = `echo "${echoify(jsonObject)}" | jq '${query}'`;
   let result = exec(command).toString();
-  return JSON.parse(result);
+  try {
+    return JSON.parse(result);
+  } catch(err) {
+    console.log('Not valid JSON returned from jq', result);
+    return result;
+  }
 }
 
 const echoify = (jsonObject) => {
@@ -27,5 +34,6 @@ const echoify = (jsonObject) => {
 
 module.exports = {
   compareResults,
-  jq
+  jq,
+  parseJSONFile
 }

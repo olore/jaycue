@@ -34,4 +34,5 @@ describe('First tests', () => {
     let jsonFile = __dirname + '/mocks/simple.json';
     compareResults(jsonFile, query);
   });
+
 });
