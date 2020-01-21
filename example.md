@@ -25,7 +25,7 @@ The JSON looked like this:
 This is the code that was written:
 
 ```javascript
-const lastFour = get(data, 'submit.applicants[0].identities', [])
+const ssn = get(data, 'submit.applicants[0].identities', [])
   .reduce((accume, identity) => {
     if (identity.type === 'SSN' && identity.number) {
       accum = identity.number;
@@ -44,5 +44,5 @@ $ cat test.json | jq '.applicants[0].identities[] | select(.type=="SSN") .number
 My hope is to provide a library function that will let us do this:
 
 ```javascript
-const lastFour = jqx(data, '.applicants[0].identities[] | select(.type=="SSN") .number');
+const ssn = jqx(data, '.applicants[0].identities[] | select(.type=="SSN") .number');
 ```

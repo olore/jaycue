@@ -23,7 +23,7 @@ const jq = (jsonObject, filter) => {
   try {
     return JSON.parse(result);
   } catch(err) {
-    console.log('Not valid JSON returned from jq', result);
+    console.warn('Invalid JSON returned from jq', result);
     return result;
   }
 }

@@ -1,4 +1,5 @@
 const get = require('lodash.get');
+const handleSelect = require('./commands/select');
 
 const jqx = (jsonObject, filter) => {
   if (filter === '.') {
@@ -8,6 +9,13 @@ const jqx = (jsonObject, filter) => {
   let filters = filter.split('|').map(str => str.trim());
   return parse(jsonObject, filters);
 };
+
+const isArrayIndexing = (filter) => {
+  return ((filter.startsWith('[')
+      && !filter.startsWith('["')   // .["test"] (not array indexing)
+      && (!/\[\d+]/.test(filter)))  // .[1] (not array indexing)
+      || filter.includes(':'));     // .[1:4] (is array indexing)
+}
 
 const parse = (jsonObject, filters) => {
   if (filters && filters.length === 0) {
@@ -19,15 +27,8 @@ const parse = (jsonObject, filters) => {
   if (filter.startsWith('.')) {
     filter = filter.substring(1);
 
-    if ((filter.startsWith('[')
-        && !filter.startsWith('["')
-        && (!/\[\d/.test(filter)))
-        || filter.includes(':')) {
+    if (isArrayIndexing(filter)) {
       return parse(handleArrayIndexing(jsonObject, filter), filters);
-    }
-
-    if (/\?$/.test(filter)) {
-      filter = filter.substring(0, filter.length-1);
     }
 
     // just use plain lodash.get
@@ -36,26 +37,12 @@ const parse = (jsonObject, filters) => {
   } else {
 
     if (filter.startsWith('select')) {
-      return handleSelect(jsonObject, filter, filters);
+      let res = handleSelect(jsonObject, filter, filters);
+      return parse(res.jsonObject, res.filters);
     }
     console.log('returning undefined! because ', filter);
     return undefined; // when filter doesn't start with .
   }
-}
-
-const handleSelect = (jsonObject, filter, filters) => {
-  let field = filter.substring(8, filter.indexOf(' '));
-  let value = filter.match(/\"(.*?)\"/)[1];
-  // assume == is operator
-
-  let foo = undefined;
-  jsonObject.split("\n").forEach((json) => {
-    if (JSON.parse(json)[field] == value) {
-      foo = JSON.parse(json);
-    }
-  });
-
-  return parse(foo, filters);
 }
 
 const handleArrayIndexing = (jsonObject, filter) => {
@@ -98,6 +85,6 @@ const handleArrayIndexing = (jsonObject, filter) => {
 
   // fall back - shouldn't get here
   return jsonObject;
-};
+}
 
 module.exports = jqx;
