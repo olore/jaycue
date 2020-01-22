@@ -15,4 +15,15 @@ describe('Optional Object Identifier-Index', ()=> {
     expect(jaycue(json, filter)).toEqual(jq(json, filter));
   });
 
+  test('Optional with brackets', () => {
+    let filter = '.["foo"]?';
+    let json = {"foo": 42};
+    expect(jaycue(json, filter)).toEqual(jq(json, filter));
+  });
+
+  test.skip('Optional within brackets', () => {
+    let filter = '[.foo?]';
+    let json = [1,2];
+    expect(jaycue(json, filter)).toEqual(jq(json, filter));
+  });
 });
