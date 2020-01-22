@@ -44,5 +44,5 @@ $ cat test.json | jq '.applicants[0].identities[] | select(.type=="SSN") .number
 My hope is to provide a library function that will let us do this:
 
 ```javascript
-const ssn = jqx(data, '.applicants[0].identities[] | select(.type=="SSN") .number');
+const ssn = jq(data, '.applicants[0].identities[] | select(.type=="SSN") .number');
 ```

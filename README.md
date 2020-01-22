@@ -1,11 +1,11 @@
 <h1 align="center">
 	<br>
-	jqx
+	jaycue
 	<br>
 	<br>
 </h1>
 
-jqx is my little side project that mimics the best parts jq https://stedolan.github.io/jq/
+jaycue is my little side project that mimics the best parts jq https://stedolan.github.io/jq/
 
 I am TDD'ing this to get some practice, using the `jq` documentation, and hopefully make something useful. Please see below for some similar, more mature, great projects.
 
@@ -13,13 +13,13 @@ I am TDD'ing this to get some practice, using the `jq` documentation, and hopefu
 ## Install
 
 ```console
-$ npm install jqx
+$ npm install jaycue
 ```
 
 ## Usage
 
 ```js
-const jqx = require('jqx');
+const jq = require('jaycue');
 
 console.log({foo: 123}, '.foo');
 ```

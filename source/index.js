@@ -1,3 +1,3 @@
-const jqx = require('./jqx');
+const jaycue = require('./jaycue');
 
-module.exports = jqx;
+module.exports = jaycue;

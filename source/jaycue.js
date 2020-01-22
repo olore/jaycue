@@ -1,6 +1,6 @@
 const { parse } = require('./parser');
 
-const jqx = (jsonObject, filter) => {
+const jaycue = (jsonObject, filter) => {
 
   if (filter === '.') {
     return jsonObject;
@@ -10,4 +10,4 @@ const jqx = (jsonObject, filter) => {
   return parse(jsonObject, filters);
 };
 
-module.exports = jqx;
+module.exports = jaycue;
