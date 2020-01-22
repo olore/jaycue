@@ -21,7 +21,8 @@ $ npm install jaycue
 ```js
 const jq = require('jaycue');
 
-console.log({foo: 123}, '.foo');
+console.log(jq({foo: 123}, '.foo'));
+123
 ```
 
 ## Development

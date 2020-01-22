@@ -16,8 +16,15 @@ const parse = (jsonObject, filters) => {
       return parse(handleArrayIndexing(jsonObject, filter), filters);
     }
 
+    let lodashDefault = undefined;
+
+    if (filter.includes('?')) {
+      filter = filter.replace('?', '');
+      lodashDefault = null;
+    }
+
     // use our old friend lodash.get
-    return parse(get(jsonObject, filter), filters);
+    return parse(get(jsonObject, filter, lodashDefault), filters);
 
   } else {
 
