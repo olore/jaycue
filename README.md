@@ -35,3 +35,67 @@ I really need some kind of parser for the query, the current regex works, but it
 https://github.com/stedolan/jq/wiki/jq-Language-Description
 
 Check out this project which is a JavaScript wrapper around jq: https://github.com/sanack/node-jq. Here are some more cool jq projects: https://github.com/fiatjaf/awesome-jq
+
+
+## Supported Filters
+
+### Basic Filters
+```javascript
+{
+	"value": 42,
+	"text": "less interesting data",
+	"name": {
+		"first": "Brian"
+		"last": "Olore"
+	}
+}
+```
+
+filter | output 
+------ | ------
+`.`    | `{ "value": 42, "text": "less interesting data","name": { "first": "Brian" "last": "Olore" } }` (object)
+`.value` | `42` (number)
+`.text` | `less interesting data` (string)
+`.["text"]` | `less interesting data` (string)
+`.name` | `"name": { "first": "Brian" "last": "Olore" }` (object)
+`.name.first` | `Brian` (string)
+`.missing` | `undefined`
+`.missing?` | `null`
+`.["missing"]?` | `null`
+
+### Array Filters
+```javascript
+["a","b","c","d","e"];
+```
+
+filter | output 
+------ | ------
+`.[]` | `"a","b","c","d","e"` (not json)
+`.[0]` | `a`
+`.[-2]` | `d`
+
+### Array Slicing Filters
+filter | output 
+------ | ------
+`.[2:4]` | `["c", "d"]`
+`.[:3]` | `["a", "b", "c"]`
+`.[:-3]` | `["a", "b"]`
+`.[-2:]` | `["d", "e"]`
+`.[2:]` | `["c", "d", "e"]`
+
+### Select Function
+filter | output 
+```javascript 
+[
+	{"id": "first", "val": 1}, 
+	{"id": "second", "val": 2}
+]
+```
+
+filter | output 
+------ | ------
+`.[] | select(.id == "second")` | `{"id": "second", "val": 2}`
+`.[] | select(.id == "second") | .val` | `2` (number)
+`.[] | select(.id == "second") .val` | `2` (number)
+`.[] | select(.id != "second") .val` | `1` (number)
+
