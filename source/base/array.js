@@ -1,4 +1,3 @@
-
 const handleArrayIndexing = (jsonObject, filter) => {
   if (filter === '[]') {
     return jsonObject.map(obj => JSON.stringify(obj)).join("\n");
