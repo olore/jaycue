@@ -42,12 +42,12 @@ Check out this project which is a JavaScript wrapper around jq: https://github.c
 ### Basic Filters
 ```javascript
 {
-	"value": 42,
-	"text": "less interesting data",
-	"name": {
-		"first": "Brian"
-		"last": "Olore"
-	}
+  "value": 42,
+  "text": "less interesting data",
+  "name": {
+    "first": "Brian"
+    "last": "Olore"
+  }
 }
 ```
 
@@ -91,10 +91,10 @@ filter   | output
 ]
 ```
 
-filter                                 | output
------------------------------------    | -------------------
-`.[] \| select(.id == "second")`        | `{"id": "second", "val": 2}`
+filter                                   | output
+-----------------------------------      | -------------------
+`.[] \| select(.id == "second")`         | `{"id": "second", "val": 2}`
 `.[] \| select(.id == "second") \| .val` | `2` (number)
-`.[] \| select(.id == "second") .val`   | `2` (number)
-`.[] \| select(.id != "second") .val`   | `1` (number)
+`.[] \| select(.id == "second") .val`    | `2` (number)
+`.[] \| select(.id != "second") .val`    | `1` (number)
 
