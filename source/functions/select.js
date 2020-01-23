@@ -1,26 +1,21 @@
 
-const handleSelect = (data, filter, filters) => {
+const handleSelect = (data, filter) => {
   let inParens = filter.match(/\((.*?)\)/)[1];
   let [field, op, value] = parseSelectValues(inParens);
   let suffix = filter.match(/select\(.*?\)(.*$)/)[1];
 
-  let selectedData = undefined;
+  let foo = undefined;
 
   data.split("\n").forEach((json) => {
     const parsed = JSON.parse(json);
     if (comparisonFunction(op, parsed[field], value)()) {
-      selectedData = parsed;
+      foo = parsed;
     }
   });
 
-  // treat anything after select() as a filter by putting it in in the front of the filters array
-  if (suffix) {
-    filters.unshift(suffix.trim());
-  }
- 
   return {
-    jsonObject: selectedData,
-    filters 
+    jsonObject: foo,
+    newFilter: suffix && suffix.trim() 
   };
 }
 

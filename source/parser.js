@@ -29,12 +29,15 @@ const parse = (data, filters) => {
   } else {
 
     if (filter.startsWith('select')) {
-      let res = handleSelect(data, filter, filters);
-      return parse(res.jsonObject, res.filters);
+      let res = handleSelect(data, filter);
+      if (res.newFilter) {
+        filters.unshift(res.newFilter);
+      }
+      return parse(res.jsonObject, filters);
     }
 
     console.log('returning undefined! because ', filter);
-    return undefined; // when filter doesn't start with .
+    return undefined; // when filter doesn't start with . or 'select'
   }
 }
 
