@@ -1,8 +1,7 @@
 
 const handleSelect = (data, filter) => {
-  let inParens = filter.match(/\((.*?)\)/)[1];
+  let [, inParens, suffix] = filter.match(/\((.*?)\)(.*$)/);
   let [field, op, value] = parseSelectValues(inParens);
-  let suffix = filter.match(/select\(.*?\)(.*$)/)[1];
 
   let matchedData = undefined;
 
