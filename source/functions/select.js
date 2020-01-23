@@ -4,17 +4,17 @@ const handleSelect = (data, filter) => {
   let [field, op, value] = parseSelectValues(inParens);
   let suffix = filter.match(/select\(.*?\)(.*$)/)[1];
 
-  let foo = undefined;
+  let matchedData = undefined;
 
   data.split("\n").forEach((json) => {
     const parsed = JSON.parse(json);
     if (comparisonFunction(op, parsed[field], value)()) {
-      foo = parsed;
+      matchedData = parsed;
     }
   });
 
   return {
-    jsonObject: foo,
+    jsonObject: matchedData,
     newFilter: suffix && suffix.trim() 
   };
 }

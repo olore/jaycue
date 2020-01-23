@@ -26,8 +26,8 @@ const parse = (data, filters) => {
   }
 }
 
-const handleStartingDot = (data, filter, filters) => {
-  filter = filter.substring(1);
+const handleStartingDot = (data, _filter, filters) => {
+  let filter = _filter.substring(1);
 
   if (isArrayIndexing(filter)) {
     return parse(handleArrayIndexing(data, filter), filters);
