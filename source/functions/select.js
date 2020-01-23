@@ -1,28 +1,17 @@
-const handleSelect = (jsonObject, filter, filters) => {
+
+const handleSelect = (data, filter, filters) => {
   let inParens = filter.match(/\((.*?)\)/)[1];
   let [field, op, value] = parseSelectValues(inParens);
   let suffix = filter.match(/select\(.*?\)(.*$)/)[1];
 
-  let foo = undefined;
+  let selectedData = undefined;
 
-  if (op === '==') {
-    jsonObject.split("\n").forEach((json) => {
-      const parsed = JSON.parse(json);
-      if (parsed[field] == value) {
-        foo = parsed;
-      }
-    });
-  } else if (op === '!=') {
-    jsonObject.split("\n").forEach((json) => {
-      const parsed = JSON.parse(json);
-      if (parsed[field] != value) {
-        foo = parsed;
-      }
-    });
-  } else {
-    console.log(`Error: Unknown operator ${op}`);
-    return undefined;
-  }
+  data.split("\n").forEach((json) => {
+    const parsed = JSON.parse(json);
+    if (comparisonFunction(op, parsed[field], value)()) {
+      selectedData = parsed;
+    }
+  });
 
   // treat anything after select() as a filter by putting it in in the front of the filters array
   if (suffix) {
@@ -30,7 +19,7 @@ const handleSelect = (jsonObject, filter, filters) => {
   }
  
   return {
-    jsonObject: foo,
+    jsonObject: selectedData,
     filters 
   };
 }
@@ -54,6 +43,21 @@ const cleanFirstSelectArg = (arg) => {
 // in: "second", out: second
 const cleanSecondSelectArg = (arg) => {
   return arg.replace(/\"/g, '').trim();
+}
+
+const comparisonFunction = (op, field, value) => {
+  if (op === '!=') {
+    return () => {
+      return field != value;
+    }
+  } else if (op === '==') {
+    return () => {
+      return field === value;
+    }
+  } else {
+    console.log(`Error: Unknown operator ${op}`);
+    return undefined;
+  }
 }
 
 module.exports = handleSelect;

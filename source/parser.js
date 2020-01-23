@@ -2,9 +2,9 @@ const get = require('lodash.get');
 const handleSelect = require('./functions/select');
 const { handleArrayIndexing, isArrayIndexing } = require('./base/array');
 
-const parse = (jsonObject, filters) => {
+const parse = (data, filters) => {
   if (filters && filters.length === 0) {
-    return jsonObject;
+    return data;
   }
 
   let filter = filters.shift().trim();
@@ -13,7 +13,7 @@ const parse = (jsonObject, filters) => {
     filter = filter.substring(1);
 
     if (isArrayIndexing(filter)) {
-      return parse(handleArrayIndexing(jsonObject, filter), filters);
+      return parse(handleArrayIndexing(data, filter), filters);
     }
 
     let lodashDefault = undefined;
@@ -24,12 +24,12 @@ const parse = (jsonObject, filters) => {
     }
 
     // use our old friend lodash.get
-    return parse(get(jsonObject, filter, lodashDefault), filters);
+    return parse(get(data, filter, lodashDefault), filters);
 
   } else {
 
     if (filter.startsWith('select')) {
-      let res = handleSelect(jsonObject, filter, filters);
+      let res = handleSelect(data, filter, filters);
       return parse(res.jsonObject, res.filters);
     }
 
