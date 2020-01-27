@@ -9,6 +9,8 @@
 
 jaycue is my little side project that mimics the best parts [jq](https://stedolan.github.io/jq/) in pure JavaScript.
 
+[![npm dependents](https://badgen.net/npm/dependents/jaycue)](https://www.npmjs.com/package/jaycue?activeTab=dependents) [![Downloads](https://badgen.net/npm/dt/jaycue)](https://www.npmjs.com/package/jaycue) [![run on repl.it](http://repl.it/badge/github/olore/jaycue)](https://repl.it/github/olore/jaycue)
+
 I am TDD'ing this to get some practice, using the [jq documentation](https://stedolan.github.io/jq/manual/#Basicfilters), and hopefully make something useful. Please see below for some similar, more mature, great projects built around `jq`.
 
 
