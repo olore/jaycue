@@ -98,3 +98,12 @@ filter                                   | output
 `.[] \| select(.id == "second") .val`    | `2` (number)
 `.[] \| select(.id != "second") .val`    | `1` (number)
 
+## Development
+
+### Testing
+Must have `jq` installed to run tests
+
+Running tests
+```shell script
+npm test
+```
