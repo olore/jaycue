@@ -1,13 +1,22 @@
 {
   "name": "jaycue",
   "version": "1.0.0",
-  "description": "",
+  "description": "jaycue mimics the best parts [jq](https://stedolan.github.io/jq/) in pure JavaScript.",
   "main": "source",
   "scripts": {
     "test": "jest"
   },
   "author": "Brian Olore <brian@olore.net>",
   "license": "MIT",
+  "keywords": [
+    "jq",
+    "filter",
+    "query"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/olore/jaycue.git"
+  },
   "devDependencies": {
     "jest": "^24.9.0"
   },
