@@ -5,6 +5,8 @@
   <br>
 </h1>
 
+[![npm version](https://badge.fury.io/js/jaycue.svg)](https://badge.fury.io/js/jaycue)
+
 jaycue is my little side project that mimics the best parts [jq](https://stedolan.github.io/jq/) in pure JavaScript.
 
 I am TDD'ing this to get some practice, using the [jq documentation](https://stedolan.github.io/jq/manual/#Basicfilters), and hopefully make something useful. Please see below for some similar, more mature, great projects built around `jq`.
@@ -82,7 +84,7 @@ filter   | output
 `.[2:]`  | `["c", "d", "e"]`
 
 ### Select Function
-```javascript 
+```javascript
 [
   {"id": "first", "val": 1},
   {"id": "second", "val": 2}
