@@ -1,5 +1,7 @@
 const fs = require('fs');
 const exec = require('child_process').execSync;
+const JQ_PATH = './node_modules/node-jq/bin/jq';
+
 const jaycue = require('../source');
 
 const parseJSONFile = (filePath) => {
@@ -18,7 +20,7 @@ const compareResults = (jsonFile, filter) => {
 
 // run actual jq command 
 const jq = (jsonObject, filter) => {
-  let command = `echo "${echoify(jsonObject)}" | jq '${filter}'`;
+  let command = `echo "${echoify(jsonObject)}" | ${JQ_PATH} '${filter}'`;
   let result = exec(command).toString();
   try {
     return JSON.parse(result);

@@ -5,7 +5,10 @@
   <br>
 </h1>
 
-[![npm version](https://badgen.net/npm/v/jaycue)] [![npm dependents](https://badgen.net/npm/dependents/jaycue)](https://www.npmjs.com/package/jaycue?activeTab=dependents) [![Downloads](https://badgen.net/npm/dt/jaycue)](https://www.npmjs.com/package/jaycue) [![run on repl.it](http://repl.it/badge/github/olore/jaycue)](https://repl.it/github/olore/jaycue)
+[![npm version](https://badgen.net/npm/v/jaycue)](https://www.npmjs.com/package/jaycue)
+[![npm dependents](https://badgen.net/npm/dependents/jaycue)](https://www.npmjs.com/package/jaycue?activeTab=dependents)
+[![Downloads](https://badgen.net/npm/dt/jaycue)](https://www.npmjs.com/package/jaycue)
+[![run on repl.it](http://repl.it/badge/github/olore/jaycue)](https://repl.it/github/olore/jaycue)
 
 jaycue is my little side project that mimics the best parts [jq](https://stedolan.github.io/jq/) in pure JavaScript.
 
@@ -26,16 +29,6 @@ const jq = require('jaycue');
 console.log(jq({foo: 123}, '.foo'));
 123
 ```
-
-## Development
-Must have `jq` installed to run tests
-
-
-## Notes
-Read the [jq Language Description](https://github.com/stedolan/jq/wiki/jq-Language-Description)
-
-Check out this project which is a JavaScript wrapper around jq: https://github.com/sanack/node-jq. Here are some more cool jq projects: https://github.com/fiatjaf/awesome-jq
-
 
 ## Supported Filters
 
@@ -98,12 +91,18 @@ filter                                   | output
 `.[] \| select(.id == "second") .val`    | `2` (number)
 `.[] \| select(.id != "second") .val`    | `1` (number)
 
-## Development
+## Testing
+~~Must have `jq` installed to run tests~~
+`jq` is now supplied by [node-jq](https://npmjs.org/package/node-jq)
 
-### Testing
-Must have `jq` installed to run tests
+As previously mentioned, all code has been test-driven. The test-helper provides a way to call the actual `jq`, making it easy to compare results.
 
 Running tests
 ```shell script
 npm test
 ```
+
+## Notes
+Read the [jq Language Description](https://github.com/stedolan/jq/wiki/jq-Language-Description)
+
+Check out this project which is a JavaScript wrapper around jq: https://github.com/sanack/node-jq. Here are some more cool jq projects: https://github.com/fiatjaf/awesome-jq
