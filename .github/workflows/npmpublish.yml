@@ -1,5 +1,21 @@
 name: Node.js Package
 
+# From: https://dev.to/joeattardi/how-to-publish-an-npm-package-to-npm-and-github-package-registry-simultaneously-using-github-actions-213a
+#
+# Tag the commit
+#    git tag 2.0.1
+# Then I push this tag:
+#   git push origin 2.0.1
+#
+# This will draft a new release in the repository, but it won't run the workflow yet.
+# Go to your GitHub repository page and navigate to the releases section.
+# You'll see the tag you just pushed at the top of the list.
+#
+# Click on the tag, then click the "Edit tag" button. Enter some details about the release,
+# then click the green "Publish release" button. Once the release is published, the package
+# publishing workflow should begin. To verify this, go to the "Actions" tab of your repository.
+# You should see the "Node.js Package" workflow running.
+
 on:
   release:
     types: [created]
