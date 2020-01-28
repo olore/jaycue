@@ -5,7 +5,7 @@
   <br>
 </h1>
 
-[![npm version](https://badge.fury.io/js/jaycue.svg)](https://badge.fury.io/js/jaycue)
+[![npm version](https://badgen.net/npm/v/jaycue)] [![npm dependents](https://badgen.net/npm/dependents/jaycue)](https://www.npmjs.com/package/jaycue?activeTab=dependents) [![Downloads](https://badgen.net/npm/dt/jaycue)](https://www.npmjs.com/package/jaycue) [![run on repl.it](http://repl.it/badge/github/olore/jaycue)](https://repl.it/github/olore/jaycue)
 
 jaycue is my little side project that mimics the best parts [jq](https://stedolan.github.io/jq/) in pure JavaScript.
 
