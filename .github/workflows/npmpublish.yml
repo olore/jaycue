@@ -18,6 +18,8 @@ jobs:
       - run: |
           npm ci
           npm test
+          git config user.email "brian@olore.net"
+          git config user.name "olore"
           npm run release
           git push --follow-tags origin HEAD
           npm publish
