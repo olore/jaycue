@@ -24,8 +24,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      # actions/checkout@v1 (v1.2.0) = 50fbc622fc4ef5163becd7fab6573eac35f8462e
+      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e
+      # actions/setup-node@v1 (v1.3.0) = b6651e20e530d6e6b845a9828606779e89f5529c
+      - uses: actions/setup-node@b6651e20e530d6e6b845a9828606779e89f5529c
         with:
           node-version: 12
       - run: npm ci
@@ -35,8 +37,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      # actions/checkout@v1 (v1.2.0) = 50fbc622fc4ef5163becd7fab6573eac35f8462e
+      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e
+      # actions/setup-node@v1 (v1.3.0) = b6651e20e530d6e6b845a9828606779e89f5529c
+      - uses: actions/setup-node@b6651e20e530d6e6b845a9828606779e89f5529c
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/

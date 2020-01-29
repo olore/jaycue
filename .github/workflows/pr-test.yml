@@ -7,12 +7,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      # actions/checkout@v1 = 50fbc622fc4ef5163becd7fab6573eac35f8462e
+      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e
       - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
+        # actions/setup-node@v1 (v1.3.0) = b6651e20e530d6e6b845a9828606779e89f5529c
+        uses: actions/setup-node@b6651e20e530d6e6b845a9828606779e89f5529c
         with:
           node-version: 12.x
-      - name: Install
+      - name: Install & Test
         run: |
           npm ci
           npm test
