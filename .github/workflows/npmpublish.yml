@@ -18,11 +18,9 @@ jobs:
       - run: |
           npm ci
           npm test
-          git config user.email "brian@olore.net"
-          git config user.name "olore"
           npm run release
           git push --follow-tags origin HEAD
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-          GITHUB_TOKEN: ${{secrets.the_github_token}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} # auto available
