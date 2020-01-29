@@ -28,7 +28,11 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm run release
+      - run: |
+          npm ci
+          git config user.email "brian@olore.net"
+          git config user.name "olore"
+          npm run release
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          GITHUB_TOKEN: ${{secrets.the_github_token}}
