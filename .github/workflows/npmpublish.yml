@@ -21,7 +21,7 @@ jobs:
           git config user.email "brian@olore.net"
           git config user.name "$GITHUB_ACTOR"
           npm run release
-          git push --follow-tags "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/olore/jaycue.git" HEAD
+          git push --follow-tags "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/olore/jaycue.git" master
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
