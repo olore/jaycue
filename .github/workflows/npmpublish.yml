@@ -21,10 +21,6 @@ jobs:
           git config user.email "brian@olore.net"
           git config user.name "$GITHUB_ACTOR"
           npm run release
-
-        # published, but didn't push
-        # git push --follow-tags "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/olore/jaycue.git" refs/remotes/origin/master
-
           git push --follow-tags "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/olore/jaycue.git" HEAD
           npm publish
         env:
