@@ -23,7 +23,7 @@ jobs:
           npm run release
           echo "https://$GITHUB_ACTOR:$GITHUB_TOKEN@$GITHUB_REPOSITORY"
           git show-ref
-          git push --follow-tags "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/olore/jaycue.git" HEAD
+          git push --follow-tags "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/olore/jaycue.git" refs/remotes/origin/master
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
