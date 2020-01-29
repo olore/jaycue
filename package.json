@@ -4,7 +4,8 @@
   "description": "jaycue mimics the best parts [jq](https://stedolan.github.io/jq/) in pure JavaScript.",
   "main": "source",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "release": "standard-version"
   },
   "author": "Brian Olore <brian@olore.net>",
   "license": "MIT",
@@ -19,7 +20,8 @@
   },
   "devDependencies": {
     "jest": "^24.9.0",
-    "node-jq": "^1.11.0"
+    "node-jq": "^1.11.0",
+    "standard-version": "^7.1.0"
   },
   "dependencies": {
     "lodash.get": "^4.4.2",
