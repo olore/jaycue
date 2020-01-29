@@ -21,9 +21,7 @@ jobs:
           git config user.email "brian@olore.net"
           git config user.name "$GITHUB_ACTOR"
           npm run release
-          echo "https://$GITHUB_ACTOR:$GITHUB_TOKEN@$GITHUB_REPOSITORY"
-          git show-ref
-          git push --follow-tags "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/olore/jaycue.git" refs/remotes/origin/master
+          git push --follow-tags "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/olore/jaycue.git" HEAD
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
