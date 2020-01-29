@@ -5,20 +5,7 @@ on:
     branches:
       - master
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      # actions/checkout@v1 (v1.2.0) = 50fbc622fc4ef5163becd7fab6573eac35f8462e
-      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e
-      # actions/setup-node@v1 (v1.3.0) = b6651e20e530d6e6b845a9828606779e89f5529c
-      - uses: actions/setup-node@b6651e20e530d6e6b845a9828606779e89f5529c
-        with:
-          node-version: 12
-      - run: npm ci
-      - run: npm test
-
   publish-npm:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       # actions/checkout@v1 (v1.2.0) = 50fbc622fc4ef5163becd7fab6573eac35f8462e
@@ -30,9 +17,12 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: |
           npm ci
+          npm test
           git config user.email "brian@olore.net"
           git config user.name "olore"
           npm run release
+          git push --follow-tags origin HEAD
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
           GITHUB_TOKEN: ${{secrets.the_github_token}}
