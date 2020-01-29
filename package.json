@@ -1,6 +1,6 @@
 {
   "name": "jaycue",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "jaycue mimics the best parts [jq](https://stedolan.github.io/jq/) in pure JavaScript.",
   "main": "source",
   "scripts": {
