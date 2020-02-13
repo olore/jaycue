@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  jaycue
+	<img width="320" src="media/logo.png" alt="jaycue">
   <br>
   <br>
 </h1>
@@ -106,3 +106,6 @@ npm test
 Read the [jq Language Description](https://github.com/stedolan/jq/wiki/jq-Language-Description)
 
 Check out this project which is a JavaScript wrapper around jq: https://github.com/sanack/node-jq. Here are some more cool jq projects: https://github.com/fiatjaf/awesome-jq
+
+## Thanks
+* Logo by Joseph Olore
