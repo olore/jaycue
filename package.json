@@ -19,6 +19,7 @@
     "url": "https://github.com/olore/jaycue.git"
   },
   "devDependencies": {
+    "acorn": ">=5.7.4",
     "jest": "^24.9.0",
     "node-jq": "^1.11.0",
     "standard-version": "^7.1.0"
