@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://github.com/olore/jaycue/compare/v1.2.4...v1.2.5) (2020-03-16)
+
+
+### Bug Fixes
+
+* acorn security alert for CVE-2020-7598 ([9c7f274](https://github.com/olore/jaycue/commit/9c7f274ef209397637d899e6ebaa469550f1e646))
+
 ### [1.2.4](https://github.com/olore/jaycue/compare/v1.2.3...v1.2.4) (2020-02-13)
 
 ### [1.2.3](https://github.com/olore/jaycue/compare/v1.2.0...v1.2.3) (2020-01-29)
