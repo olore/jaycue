@@ -23,7 +23,7 @@
     "jest": "^24.9.0",
     "minimist": ">=1.2.2",
     "node-jq": "^1.11.0",
-    "standard-version": "^7.1.0"
+    "standard-version": "^8.0.1"
   },
   "dependencies": {
     "lodash.get": "^4.4.2",
