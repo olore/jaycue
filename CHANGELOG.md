@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.12 (2021-01-24)
+
+
+### Bug Fixes
+
+* npm fixes ([#36](https://github.com/olore/jaycue/issues/36)) ([51386aa](https://github.com/olore/jaycue/commit/51386aa58ff12cf18eb74febea775707ff2fb6e3))
+
 ### 1.2.11 (2021-01-24)
 
 ### [1.2.10](https://github.com/olore/jaycue/compare/v1.2.9...v1.2.10) (2021-01-24)
