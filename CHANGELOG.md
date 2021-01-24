@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.10](https://github.com/olore/jaycue/compare/v1.2.9...v1.2.10) (2021-01-24)
+
 ### [1.2.9](https://github.com/olore/jaycue/compare/v1.2.8...v1.2.9) (2020-07-21)
 
 ### [1.2.8](https://github.com/olore/jaycue/compare/v1.2.7...v1.2.8) (2020-07-21)
