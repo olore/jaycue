@@ -8,8 +8,7 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      # actions/checkout@v1 (v1.2.0) = 50fbc622fc4ef5163becd7fab6573eac35f8462e
-      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: 12
