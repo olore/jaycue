@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.2.13 (2021-01-24)
+
+
+### Bug Fixes
+
+* dependabot alerts: dot-prop, node-notifier ([#37](https://github.com/olore/jaycue/issues/37)) ([565fc34](https://github.com/olore/jaycue/commit/565fc340efbe5df3a598dd957c6d0843f7c3d85e))
+
 ### 1.2.12 (2021-01-24)
 
 
