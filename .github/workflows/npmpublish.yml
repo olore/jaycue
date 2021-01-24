@@ -10,8 +10,7 @@ jobs:
     steps:
       # actions/checkout@v1 (v1.2.0) = 50fbc622fc4ef5163becd7fab6573eac35f8462e
       - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e
-      # actions/setup-node@v1 (v1.3.0) = b6651e20e530d6e6b845a9828606779e89f5529c
-      - uses: actions/setup-node@b6651e20e530d6e6b845a9828606779e89f5529c
+      - uses: actions/setup-node@v2
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
