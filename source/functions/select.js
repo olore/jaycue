@@ -36,6 +36,10 @@ const cleanFirstSelectArg = (arg) => {
 
 // in: "second", out: second
 const cleanSecondSelectArg = (arg) => {
+  const possibleNumber = Number(arg);
+  if (!Number.isNaN(possibleNumber)) {
+    return possibleNumber;
+  }
   return arg.replace(/\"/g, '').trim();
 }
 
