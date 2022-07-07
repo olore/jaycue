@@ -38,4 +38,10 @@ describe('select', ()=> {
     let json = [{"id": "first", "val": 1}, {"id": "second", "val": 2}];
     expect(jaycue(json, filter)).toEqual(jq(json, filter));
   });
+
+  test('select by numerical value', () => {
+    let filter = '.[] | select(.val != 2) .id';
+    let json = [{"id": "first", "val": 1}, {"id": "second", "val": 2}];
+    expect(jaycue(json, filter)).toEqual(jq(json, filter));
+  });
 });
